@@ -4,27 +4,27 @@
     "slug": "RNApp",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/images/moon.jpg",
+    "icon": "./assets/mpolcoffe.jpg",
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/moon.jpg",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "image": "./assets/mpolcoffe.jpg",
+      "resizeMode": "cover",
+      "backgroundColor": "#eee"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/images/moon.jpg",
+        "foregroundImage": "./assets/mpolcoffe.jpg",
         "backgroundColor": "#ffffff"
       }
     },
     "web": {
       "bundler": "metro",
       "output": "static",
-      "favicon": "./assets/images/moon.jpg"
+      "favicon": "./assets/mpolcoffe.jpg"
     },
     "plugins": [
       "expo-router"
