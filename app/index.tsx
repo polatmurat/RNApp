@@ -3,7 +3,7 @@ import { View, StyleSheet, Text } from "react-native";
 export default function HomeScreen() {
   return (
     <View style={styles.container}>
-      <Text style={{ color: "white" }}>Murat Polat</Text>
+      <Text>Murat Polat</Text>
     </View>
   );
 }
