@@ -9,10 +9,10 @@ import wallpaper from "@/assets/images/scene-most.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
 import CustomButton from "@/components/CustomButton";
+import { useRouter } from "expo-router";
+
 export default function HomeScreen() {
-  const onPress = () => {
-    console.log("Clicked");
-  };
+  const router = useRouter();
 
   return (
     <View className="flex-1">
@@ -30,13 +30,16 @@ export default function HomeScreen() {
               <Text className="text-white text-4xl text-center font-bold">
                 bomch4nte
               </Text>
-              <Text className="text-center text-white text-regular text-2xl mt-3">
-                The Initial RN Basics App.
+              <Text className="text-center text-white text-regular text-xl mt-3">
+                Hackers realize, kiddies memorize.
               </Text>
             </View>
 
             <View>
-              <CustomButton onPress={onPress} title="Get Started" />
+              <CustomButton
+                onPress={() => router.push("/login")}
+                title="Get Started"
+              />
             </View>
 
             <StatusBar style="light" />
