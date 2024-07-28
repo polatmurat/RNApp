@@ -3,13 +3,13 @@ import {
   StyleSheet,
   Text,
   ImageBackground,
-  SafeAreaView,
 } from "react-native";
 import wallpaper from "@/assets/images/scene-most.jpg";
 import { LinearGradient } from "expo-linear-gradient";
 import { StatusBar } from "expo-status-bar";
-import CustomButton from "@/components/CustomButton";
+import CustomButton from "@/components/utils/CustomButton";
 import { useRouter } from "expo-router";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 export default function HomeScreen() {
   const router = useRouter();

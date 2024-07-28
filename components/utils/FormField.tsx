@@ -29,11 +29,11 @@ const FormField = ({
           className="flex-1 text-white font-psemibold text-base"
           value={value}
           placeholder={placeholder}
-          placeholderTextColor="#7b7b8b"
+          placeholderTextColor="#e6e6ee"
           onChangeText={handleChangeText}
-          secureTextEntry={title === "Password" && !showPassword}
+          secureTextEntry={placeholder?.toLocaleLowerCase() === "password" && !showPassword}
         />
-        {title === "Password" && (
+        {placeholder?.toLocaleLowerCase() === "password" && (
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Image
               source={!showPassword ? icons.eye : icons.eyeHide}
