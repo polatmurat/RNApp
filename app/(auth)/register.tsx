@@ -22,7 +22,6 @@ const Register = () => {
             setFormData({ ...formData, name: e })
           }
           otherStyles="mt-7"
-          keyboardType="text"
           placeholder="Name"
           title=""
         />
@@ -51,7 +50,7 @@ const Register = () => {
         <View className="gap-1 mx-14 my-3 border-t px-5 border-white pb-2 items-center justify-evenly flex-row">
           <Text className="text-white">Already have an account?</Text>
           <Link
-            href="/register"
+            href="/login"
             className="text-lg text-white font-semibold"
           >
             Sign In

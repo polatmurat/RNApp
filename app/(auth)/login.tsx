@@ -40,7 +40,7 @@ const Login = () => {
           containerStyles="mt-7 mx-5"
         />
         <View className="gap-1 mx-14 my-3 border-t px-5 border-white pb-2 items-center justify-evenly flex-row">
-          <Text className="text-white">Already have an account?</Text>
+          <Text className="text-white">Don't have an account?</Text>
           <Link
             href="/register"
             className="text-lg text-white font-semibold"
