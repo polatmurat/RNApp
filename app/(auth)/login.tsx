@@ -1,5 +1,5 @@
 import { View, Text } from "react-native";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, ChangeEvent } from "react";
 import FormField from "@/components/utils/FormField";
 import CustomButton from "@/components/utils/CustomButton";
 import AuthWrapper from "./AuthWrapper";
@@ -10,26 +10,28 @@ import { setUserToken } from "@/features/reducers/authReducer";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
-
   const [login, response] = useUserLoginMutation();
   const dispatch = useDispatch();
   const router = useRouter();
 
-  console.log(response);
-  
-  
+  const handleInputChange = (field: keyof typeof formData) => (value: string) => {
+    setFormData(prev => ({ ...prev, [field]: value }));
+  };
 
   const submit = async () => {
-    login(formData);
+    await login(formData);
   };
 
   useEffect(() => {
     if (response.isSuccess) {
       const token = response?.data?.result?.token;
       dispatch(setUserToken(token));
-      router.push("/home")
+      router.push("/home");
+    } else if (response.error) {
+      const errorData = response.error?.data || "No data available";
+      console.log("ERROR: ", errorData);
     }
-  }, [response.isSuccess]);
+  }, [response]);
 
   return (
     <AuthWrapper>
@@ -37,9 +39,7 @@ const Login = () => {
         <Text className="text-white text-2xl text-center mb-5">Login</Text>
         <FormField
           value={formData.email}
-          handleChangeText={(e: any) =>
-            setFormData({ ...formData, email: e })
-          }
+          handleChangeText={handleInputChange("email")}
           otherStyles="mt-7"
           keyboardType="email-address"
           placeholder="Email"
@@ -47,9 +47,7 @@ const Login = () => {
         />
         <FormField
           value={formData.password}
-          handleChangeText={(e: any) =>
-            setFormData({ ...formData, password: e })
-          }
+          handleChangeText={handleInputChange("password")}
           placeholder="Password"
           title=""
         />
@@ -60,10 +58,7 @@ const Login = () => {
         />
         <View className="gap-1 mx-14 my-3 border-t px-5 border-white pb-2 items-center justify-evenly flex-row">
           <Text className="text-white">Don't have an account?</Text>
-          <Link
-            href="/register"
-            className="text-lg text-white font-semibold"
-          >
+          <Link href="/register" className="text-lg text-white font-semibold">
             Sign Up
           </Link>
         </View>
