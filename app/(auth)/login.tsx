@@ -3,14 +3,33 @@ import React, { useEffect, useState } from "react";
 import FormField from "@/components/utils/FormField";
 import CustomButton from "@/components/utils/CustomButton";
 import AuthWrapper from "./AuthWrapper";
-import { Link } from "expo-router";
+import { Link, useRouter } from "expo-router";
+import { useUserLoginMutation } from "@/features/services/auth/authService";
+import { useDispatch } from "react-redux";
+import { setUserToken } from "@/features/reducers/authReducer";
 
 const Login = () => {
   const [formData, setFormData] = useState({ email: "", password: "" });
 
-  const submit = () => {
-    console.log(formData);
+  const [login, response] = useUserLoginMutation();
+  const dispatch = useDispatch();
+  const router = useRouter();
+
+  console.log(response);
+  
+  
+
+  const submit = async () => {
+    login(formData);
   };
+
+  useEffect(() => {
+    if (response.isSuccess) {
+      const token = response?.data?.result?.token;
+      dispatch(setUserToken(token));
+      router.push("/home")
+    }
+  }, [response.isSuccess]);
 
   return (
     <AuthWrapper>
@@ -35,7 +54,7 @@ const Login = () => {
           title=""
         />
         <CustomButton
-          title="Sign In"
+          title={response.isLoading ? "Loading ... " : "Sign In"}
           onPress={submit}
           containerStyles="mt-7 mx-5"
         />
