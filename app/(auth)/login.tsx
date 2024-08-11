@@ -2,7 +2,7 @@ import { View, Text } from "react-native";
 import React, { useEffect, useState, ChangeEvent } from "react";
 import FormField from "@/components/utils/FormField";
 import CustomButton from "@/components/utils/CustomButton";
-import AuthWrapper from "./AuthWrapper";
+import AuthWrapper from "./authwrapper";
 import { Link, useRouter } from "expo-router";
 import { useUserLoginMutation } from "@/features/services/auth/authService";
 import { useDispatch } from "react-redux";

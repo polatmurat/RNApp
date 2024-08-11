@@ -2,14 +2,14 @@ import { View, Text } from "react-native";
 import React, { useEffect, useState } from "react";
 import FormField from "@/components/utils/FormField";
 import CustomButton from "@/components/utils/CustomButton";
-import AuthWrapper from "./AuthWrapper";
+import AuthWrapper from "./authwrapper";
 import { Link } from "expo-router";
 
 const Register = () => {
-  const [formData, setFormData] = useState({ name: "", email: "", password: "" });
+  const [formData, setFormData] = useState({ name: "", username: "", email: "", password: "" });
 
   const submit = () => {
-    console.log(formData);
+
   };
 
   return (
@@ -23,6 +23,14 @@ const Register = () => {
           }
           otherStyles="mt-7"
           placeholder="Name"
+          title=""
+        />
+        <FormField
+          value={formData.username}
+          handleChangeText={(e: any) =>
+            setFormData({ ...formData, username: e })
+          }
+          placeholder="Username"
           title=""
         />
         <FormField

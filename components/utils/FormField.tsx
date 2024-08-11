@@ -27,7 +27,7 @@ const FormField = ({
       <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
       <BlurView
         intensity={50}
-        style={{ borderRadius: 10, overflow: 'hidden' }}
+        style={{ borderRadius: 16, overflow: 'hidden' }}
         tint="systemThinMaterialLight"
       >
         <View className="w-full h-16 px-4 bg-black-100 border-2 border-gray-100 rounded-2xl focus:border-gray-400 items-center flex-row">
